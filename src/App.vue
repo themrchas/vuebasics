@@ -1,15 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  {{title}}
+  <p>Click on backdrop to close modal...</p>
+  <div v-if="showModal">
+    <Modal theme="sale" @close="toggleModal">
+
+      <!-- named slot example -->
+      <template v-slot:links>
+        <a href="#">link one</a>
+        <a href="#">link two</a>
+      </template>
+      <h1>Here is a template being passed</h1>
+      <p>Another tag being passed in same template</p>
+
+    </Modal>
+  </div>
+  <button type="button" @click="toggleModal">open modal</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Modal from './components/Modal'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Modal
+  },
+  data() {
+    return {
+      title: "Here is a Vue app",
+      header: "Prop passed to modal",
+      text: "Text string passed to the modal",
+      showModal: false
+    }
+  },
+  methods: {
+    toggleModal() {
+      this.showModal = !this.showModal;
+    }
   }
 }
 </script>
