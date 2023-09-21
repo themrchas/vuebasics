@@ -1,7 +1,7 @@
 <template>
     <div class="backdrop" @click.self="closeModal">
         <div class="modal" :class="{ sale: theme === 'sale'}" >
-            <slot>Default content if slot is not used</slot>
+            <slot>Default content if this default slot is not used otherwise content will be displayed here</slot>
 
             <div class="actions">
                 <slot name="links"></slot>
